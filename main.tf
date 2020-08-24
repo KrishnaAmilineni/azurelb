@@ -8,7 +8,7 @@ resource "azurerm_public_ip" "ip" {
   sku               = var.public_ip_sku
   allocation_method = var.public_ip_allocation_method
 
-  tags = merge(local.default_tags, var.extra_tags, var.ip_extra_tags)
+  tags = var.tags
 }
 
 resource "azurerm_lb" "lb" {
@@ -37,9 +37,9 @@ resource "azurerm_lb" "lb" {
       zones                         = lookup(each.value, "zones", null)
     }
   }
-  #      private_ip_address_version    = lookup(each.value, "private_ip_address_version", "IPv4")
 
-  tags = merge(local.default_tags, var.extra_tags, var.lb_extra_tags)
+
+  tags = var.tags
 }
 
 resource "azurerm_lb_backend_address_pool" "default_pool" {

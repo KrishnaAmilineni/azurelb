@@ -33,17 +33,11 @@ module "lb" {
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:-----:|
 | allocate\_public\_ip | True to allocate a Public IP to the Load Balancer. | `bool` | `false` | no |
-| client\_name | Client name/account used in naming | `string` | n/a | yes |
 | enable\_nat | True to enable NAT through Load Balancer outbound rules. | `bool` | `false` | no |
-| environment | Project environment | `string` | n/a | yes |
-| extra\_tags | Extra tags to add on all resources. | `map(string)` | `{}` | no |
 | ip\_custom\_name | Name of the Public IP address, generated if not set. | `string` | `""` | no |
-| ip\_extra\_tags | Extra tags to add to the Public IP address. | `map(string)` | `{}` | no |
-| lb\_custom\_name | Name of the Load Balancer, generated if not set. | `string` | `""` | no |
-| lb\_extra\_tags | Extra tags to add to the Load Balancer. | `map(string)` | `{}` | no |
 | lb\_frontend\_ip\_configurations | `frontend_ip_configuration` blocks as documented here: https://www.terraform.io/docs/providers/azurerm/r/lb.html#frontend_ip_configuration | `map(any)` | `{}` | no |
+| lb\_name | Name of the Load Balancer, generated if not set. | `string` | `""` | no |
 | location | Azure location. | `string` | n/a | yes |
-| location\_short | Short string for Azure location. | `string` | n/a | yes |
 | name\_prefix | Optional prefix for the generated name | `string` | `""` | no |
 | nat\_allocated\_outbound\_ports | Number of allocated outbound ports for NAT. | `number` | `1024` | no |
 | nat\_protocol | Transport protocol to use for NAT. | `string` | `"All"` | no |
@@ -51,7 +45,7 @@ module "lb" {
 | public\_ip\_sku | SKU name for the Public IP address, can be `Basic` or `Standard`. | `string` | `"Standard"` | no |
 | resource\_group\_name | Resource group name | `string` | n/a | yes |
 | sku\_name | The Name of the SKU used for this Load Balancer. Possible values are "Basic" and "Standard". | `string` | `"Standard"` | no |
-| stack | Project stack name | `string` | n/a | yes |
+| tags | tags resources. | `map(string)` | `{}` | no |
 
 ## Outputs
 
